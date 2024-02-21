@@ -20,6 +20,9 @@
 		.board{
 			height: 100vh;
 		}
+		body{
+			background-color: #ff7f50;
+		}
 	</style>
 	<!-- 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
 
@@ -62,23 +65,26 @@
 			//////////////////////////////////////////////////////////////////
 			
 			// TODO 2 - Variable declarations 
-			var positionX = 100
+			var positionX = 0
 			var points = 0
 			var speed = 10
-
+			var randNum = Math.random() * 100;
 			/* 
 			This Function will be called 20 times/second. Each time it is called,
 			it should move the Box to a new location. If the box drifts off the screen
 			turn it around! 
 			*/
 			function update() {
-				positionX = positionX + speed
+				positionX = positionX + speed;
 				moveBoxTo(positionX);
 				if (positionX>boardWidth) {
-    		 	// then do X, Y, and Z
-				 speed = -speed;
-
+				speed = -speed;
 				}
+				if (positionX<0) {
+				speed = -1 * speed;
+				}
+				
+
 			};
 
 			/* 
@@ -87,10 +93,10 @@
 			the left side of the screen.
 			*/
 			function handleBoxClick() {
-				positionX = 0
-				points = points + 1
+				positionX = 0;
+				points = points + 1;
 				changeBoxText(points);
-				speed = speed + 3
+				speed = speed + 3;
 
 			};
 		})();
